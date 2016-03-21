@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-xs-12
+      = form_for :waitlist_entry, html: {class: "form"} do |f|
+
+        .form-group
+          = f.label :email
+          = f.text_field :email, class: "form-control"
+
+        .form-group
+          = f.submit
+
+  .row
+    .col-xs-12
+      table.table.table-striped
+        thead
+          tr
+            td Email
+
+        tbody
+          - @waitlist_entries.each do |waitlist_entry|
+            tr
+              td = waitlist_entry.email
