@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'puma'
 
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

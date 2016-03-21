@@ -1,9 +1,11 @@
 <div class="jumbotron text-center">
   <div class="container">
     <h1>Welcome to TCell's Waitlist</h1>
-    <a type="button" class="btn btn-lg btn-default" href="">Waitlist</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/ruby-getting-started">Log In</a>
+    <%#<a type="button" class="btn btn-lg btn-default" href="">Waitlist</a>%>
+    <%= link_to("Log in", new_user_session_path, class: "btn btn-lg btn-primary", type: "button") %>
+    <%= link_to("Sign up", new_user_registration_path, class: "btn btn-lg btn-primary", type: "button") %>
   </div>
 </div>
+
 <div class="container">
 </div>
