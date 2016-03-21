@@ -14,6 +14,13 @@
   <% end %>
   <nav class="navbar navbar-default navbar-static-top navbar-inverse">
     <div class="container">
+      <%- if user_signed_in? %>
+        <div class="pull-right">
+          <div class="signed-in-user">
+            <%= "Hi, #{current_user.email}!" %>
+          </div>
+        </div>
+      <% end %>
       <ul class="nav navbar-nav">
         <li class="active">
           <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
