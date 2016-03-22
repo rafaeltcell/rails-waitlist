@@ -28,6 +28,7 @@ gem 'devise'
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 gem 'capistrano-rvm', group: :development
+gem 'capistrano3-puma' , group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
