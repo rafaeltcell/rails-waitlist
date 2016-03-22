@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'slim'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
@@ -26,7 +26,8 @@ gem 'puma'
 gem 'devise'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
+gem 'capistrano-rvm', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
