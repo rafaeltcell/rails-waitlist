@@ -25,6 +25,8 @@ gem 'puma'
 
 gem 'devise'
 
+gem 'tcell_agent'
+
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 gem 'capistrano-rvm', group: :development
