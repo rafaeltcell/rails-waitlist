@@ -1,4 +1,5 @@
 class WaitlistEntriesController < ApplicationController
+  skip_before_action :authenticate_user!
 
   def index
     @waitlist_entries = WaitlistEntry.all

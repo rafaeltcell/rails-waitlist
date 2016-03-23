@@ -47,6 +47,13 @@ set :keep_releases, 3
 
 namespace :deploy do
 
+  desc "Symlink tcell_config."
+  task :symlink_tcell do
+    on roles(:web) do
+      execute "ln -s #{shared_path}/config/tcell_agent.config #{release_path}/config/tcell_agent.config"
+    end
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -57,3 +64,5 @@ namespace :deploy do
   end
 
 end
+
+after "deploy:symlink:shared", "deploy:symlink_tcell"
