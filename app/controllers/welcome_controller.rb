@@ -7,4 +7,7 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def large
+  end
+
 end
