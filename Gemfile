@@ -26,7 +26,7 @@ gem 'puma'
 gem 'devise'
 
 #gem 'tcell_agent', path: "/Users/ralba/Projects/github/rubyagent-tcell"
-gem 'tcell_agent', '0.2.11'
+gem 'tcell_agent', path: "/var/www/RubyGettingStarted/shared/local/rubyagent-tcell"
 
 group :development do
   gem 'capistrano-rails'
