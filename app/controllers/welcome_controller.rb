@@ -8,6 +8,11 @@ class WelcomeController < ApplicationController
   end
 
   def large
+
+  end
+
+  def ping
+    render json: {status: "alive"}
   end
 
 end

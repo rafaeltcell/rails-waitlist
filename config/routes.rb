@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/large', controller: :welcome, action: :large
 
+  get '/ping', controller: :welcome, action: :ping
+
   root 'welcome#index'
 
 end
