@@ -13,20 +13,14 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'slim'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby, group: :production
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
 gem 'puma'
 
 gem 'devise'
-
-#gem 'tcell_agent', path: "/Users/ralba/Projects/github/rubyagent-tcell"
-#gem 'tcell_agent', path: "/var/www/RubyGettingStarted/shared/local/rubyagent-tcell"
 
 group :development do
   gem 'capistrano-rails'
@@ -35,7 +29,3 @@ group :development do
   gem 'derailed'
   gem 'stackprof'
 end
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
