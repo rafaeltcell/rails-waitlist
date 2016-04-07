@@ -18,9 +18,16 @@ gem 'therubyracer', platforms: :ruby, group: :production
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-gem 'puma'
 
 gem 'devise'
+
+group :puma_server do
+  gem 'puma'
+end
+
+group :unicorn_server do
+  gem 'unicorn'
+end
 
 group :development do
   gem 'capistrano-rails'
