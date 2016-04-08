@@ -18,7 +18,8 @@ test:
   <<: *default
   host: db
   database: waitlist_test
-  password: <%= ENV['BD_DATABASE_PASSWORD'] || ""%>
+  username: postgres
+  password:
 
 #production:
   #<<: *default
