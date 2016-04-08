@@ -9,13 +9,14 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
+  host: db
   database: waitlist_dev
-  password: <%= ENV['BD_DATABASE_PASSWORD'] || ""%>
+  username: postgres
+  password:
 
 test:
   <<: *default
-  host: localhost
+  host: db
   database: waitlist_test
   password: <%= ENV['BD_DATABASE_PASSWORD'] || ""%>
 
