@@ -12,8 +12,7 @@ services:
 
   web:
     build: .
-    command: ./script/start
-    #command: bundle exec rails s puma --port 3000 --binding 0.0.0.0
+    command: bundle exec rails s puma --port 3000 --binding 0.0.0.0
     ports:
       - "3000:3000"
     links:
