@@ -10,18 +10,6 @@ services:
     volumes:
       - /box
 
-  web:
-    build: .
-    command: bundle exec rails s puma --port 3000 --binding 0.0.0.0
-    ports:
-      - "3000:3000"
-    links:
-      - db
-    volumes:
-      - .:/rails-waitlist
-    volumes_from:
-      - box
-
   puma_web:
     build: .
     command: bundle exec puma -C config/puma.rb
