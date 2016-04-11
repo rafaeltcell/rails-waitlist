@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+(1..1000).each do |x|
+  WaitlistEntry.create(email: "waiting+#{x}@email.com")
+end
