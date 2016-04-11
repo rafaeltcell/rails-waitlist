@@ -21,3 +21,27 @@ services:
       - .:/rails-waitlist
     volumes_from:
       - box
+
+  puma_web:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    volumes:
+      - .:/rails-waitlist
+    volumes_from:
+      - box
+
+  unicorn_web:
+    build: .
+    command: bundle exec unicorn -c config/unicorn.rb
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    volumes:
+      - .:/rails-waitlist
+    volumes_from:
+      - box
