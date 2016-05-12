@@ -33,3 +33,42 @@ services:
       - .:/rails-waitlist
     volumes_from:
       - box
+
+### These are used by load-testing project to test local versions of the agent
+  puma_web_local:
+    build: .
+    command: bundle exec puma -c config/puma.rb
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    volumes:
+      - ../rubyagent-tcell/lib:/tcellagent_src/lib
+      - ../rubyagent-tcell/bin:/tcellagent_src/bin
+      - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
+      - ../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
+      - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
+      - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
+      - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
+      - .:/rails-waitlist
+    volumes_from:
+      - box
+
+  unicorn_web_local:
+    build: .
+    command: bundle exec unicorn -c config/unicorn.rb
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    volumes:
+      - ../rubyagent-tcell/lib:/tcellagent_src/lib
+      - ../rubyagent-tcell/bin:/tcellagent_src/bin
+      - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
+      - ../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
+      - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
+      - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
+      - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
+      - .:/rails-waitlist
+    volumes_from:
+      - box
