@@ -35,7 +35,7 @@ services:
       - box
 
 ### These are used by load-testing project to test local versions of the agent
-  puma_web_local:
+  puma_local_web:
     build: .
     command: bundle exec puma -C config/puma.rb
     ports:
@@ -54,7 +54,7 @@ services:
     volumes_from:
       - box
 
-  unicorn_web_local:
+  unicorn_local_web:
     build: .
     command: bundle exec unicorn -c config/unicorn.rb
     ports:
