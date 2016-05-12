@@ -37,7 +37,7 @@ services:
 ### These are used by load-testing project to test local versions of the agent
   puma_web_local:
     build: .
-    command: bundle exec puma -c config/puma.rb
+    command: bundle exec puma -C config/puma.rb
     ports:
       - "3000:3000"
     links:
