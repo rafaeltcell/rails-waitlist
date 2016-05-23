@@ -18,16 +18,7 @@ gem 'therubyracer', platforms: :ruby, group: :production
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-
 gem 'devise'
-
-group :puma_server do
-  gem 'puma'
-end
-
-group :unicorn_server do
-  gem 'unicorn'
-end
 
 group :development do
   gem 'capistrano-rails'
@@ -35,4 +26,18 @@ group :development do
   gem 'capistrano3-puma'
   gem 'derailed'
   gem 'stackprof'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
+group :puma_server do
+  gem 'puma'
+end
+
+group :unicorn_server do
+  gem 'unicorn'
+  gem 'rack-handlers'
 end
