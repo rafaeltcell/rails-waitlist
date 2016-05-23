@@ -9,14 +9,14 @@ default: &default
 
 development:
   <<: *default
-  host: db
+  host: postgreshost
   database: waitlist_dev
   username: postgres
   password:
 
 test:
   <<: *default
-  host: db
+  host: postgreshost
   database: waitlist_test
   username: postgres
   password:

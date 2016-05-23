@@ -1,6 +1,6 @@
 version: '2'
 services:
-  db:
+  postgreshost:
     image: postgres:9.4.1
     ports:
       - "5432:5432"
@@ -16,7 +16,7 @@ services:
     ports:
       - "3000:3000"
     links:
-      - db
+      - postgreshost
     volumes:
       - .:/rails-waitlist
     volumes_from:
@@ -28,7 +28,7 @@ services:
     ports:
       - "3000:3000"
     links:
-      - db
+      - postgreshost
     volumes:
       - .:/rails-waitlist
     volumes_from:
@@ -41,7 +41,7 @@ services:
     ports:
       - "3000:3000"
     links:
-      - db
+      - postgreshost
     volumes:
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
@@ -60,7 +60,7 @@ services:
     ports:
       - "3000:3000"
     links:
-      - db
+      - postgreshost
     volumes:
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
