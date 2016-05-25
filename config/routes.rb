@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/ping', controller: :welcome, action: :ping
 
+  post '/heroku/resources', controller: :welcome, action: :heroku_addon
+
   root 'welcome#index'
 
 end
