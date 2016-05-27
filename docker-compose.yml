@@ -10,11 +10,19 @@ services:
     volumes:
       - /box
 
+  web:
+    build: .
+    command: nginx
+    ports:
+      - "80:80"
+    links:
+      - puma_local_web
+
   puma_web:
     build: .
     command: bundle exec puma -C config/puma.rb
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     links:
       - postgreshost
     volumes:
@@ -51,6 +59,7 @@ services:
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/rails-waitlist
+      - ./tcell/logs/:/rails-waitlist/tcell/logs
     volumes_from:
       - box
 

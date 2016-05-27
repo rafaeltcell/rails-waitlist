@@ -7,6 +7,11 @@ RUN apt-get install -y libpq-dev
 RUN apt-get install -y libxml2-dev libxslt1-dev
 RUN apt-get install -y nodejs
 
+RUN apt-get install -y nginx
+RUN rm -v /etc/nginx/nginx.conf
+ADD docker/nginx.conf /etc/nginx/
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
 RUN useradd -ms /bin/bash tcelluser
 
 ENV APP_HOME /rails-waitlist
