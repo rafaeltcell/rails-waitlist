@@ -9,3 +9,10 @@
 (1..1000).each do |x|
   WaitlistEntry.create(email: "waiting+#{x}@email.com")
 end
+
+tcelluser = User.create(email: "tcelluser@tcell.io", password: "testing.")
+
+
+(1..10).each do |x|
+  Widget.create(name: "Tcell User's Widget (#{x})", description: "A sample widget", stock: x, user: tcelluser)
+end
