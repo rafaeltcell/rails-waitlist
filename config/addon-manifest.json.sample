@@ -1,0 +1,17 @@
+{
+  "id": "tcell",
+  "api": {
+    "config_vars": [ "TCELL_AGENT_APP_ID", "TCELL_AGENT_API_KEY" ],
+    "regions": [ "us" ],
+    "password": "129c0cbcf9899a14ef9bf48e9dbc39c4",
+    "sso_salt": "811dd9c4fa88c48f65b88c35ef2c1e1c",
+    "production": {
+      "base_url": "https://yourapp.com/heroku/resources",
+      "sso_url": "https://yourapp.com/sso/login"
+    },
+    "test": {
+      "base_url": "http://localhost:3000/heroku/resources",
+      "sso_url": "http://localhost:3000/sso/login"
+    }
+  }
+}
