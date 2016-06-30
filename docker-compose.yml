@@ -34,10 +34,9 @@ services:
     volumes_from:
       - box
 
-### These are used by load-testing project to test local versions of the agent
-  puma_local_web:
+  tcell_puma_web:
     build: .
-    command: bundle exec puma -C config/puma.rb
+    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
     ports:
       - "3000:3000"
     links:
@@ -51,12 +50,13 @@ services:
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/rails-waitlist
+      - ./docker/Gemfile.released:/rails-waitlist/Gemfile
     volumes_from:
       - box
 
-  unicorn_local_web:
+  tcell_unicorn_local_web:
     build: .
-    command: bundle exec unicorn -c config/unicorn.rb
+    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
     ports:
       - "3000:3000"
     links:
@@ -70,5 +70,46 @@ services:
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/rails-waitlist
+      - ./docker/Gemfile.released:/rails-waitlist/Gemfile
+    volumes_from:
+      - box
+
+  tcell_puma_local_web:
+    build: .
+    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes:
+      - ../rubyagent-tcell/lib:/tcellagent_src/lib
+      - ../rubyagent-tcell/bin:/tcellagent_src/bin
+      - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
+      - ../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
+      - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
+      - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
+      - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
+      - .:/rails-waitlist
+      - ./docker/Gemfile.dev:/rails-waitlist/Gemfile
+    volumes_from:
+      - box
+
+  tcell_unicorn_local_web:
+    build: .
+    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes:
+      - ../rubyagent-tcell/lib:/tcellagent_src/lib
+      - ../rubyagent-tcell/bin:/tcellagent_src/bin
+      - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
+      - ../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
+      - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
+      - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
+      - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
+      - .:/rails-waitlist
+      - ./docker/Gemfile.dev:/rails-waitlist/Gemfile
     volumes_from:
       - box
