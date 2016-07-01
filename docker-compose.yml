@@ -54,7 +54,7 @@ services:
     volumes_from:
       - box
 
-  tcell_unicorn_local_web:
+  tcell_unicorn_web:
     build: .
     command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
     ports:
