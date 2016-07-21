@@ -51,6 +51,8 @@ services:
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/rails-waitlist
+      - ./docker/Gemfile.dev:/rails-waitlist/Gemfile
+      - ./tcell:/rails-waitlist/tcell
     volumes_from:
       - box
 
@@ -70,5 +72,7 @@ services:
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/rails-waitlist
+      - ./docker/Gemfile.dev:/rails-waitlist/Gemfile
+      - ./tcell:/rails-waitlist/tcell
     volumes_from:
       - box
