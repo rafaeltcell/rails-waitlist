@@ -9,7 +9,7 @@ RUN apt-get install -y nodejs
 
 RUN useradd -ms /bin/bash tcelluser
 
-ENV APP_HOME /rails-waitlist
+ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
