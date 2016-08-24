@@ -11,26 +11,26 @@ services:
       - /box
 
   puma_web:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.perf-tests
     command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
     ports:
       - "3000:3000"
     links:
       - postgreshost
-    volumes:
-      - .:/app
     volumes_from:
       - box
 
   unicorn_web:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.perf-tests
     command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
     ports:
       - "3000:3000"
     links:
       - postgreshost
-    volumes:
-      - .:/app
     volumes_from:
       - box
 
@@ -44,26 +44,30 @@ services:
     links:
       - postgreshost
     volumes:
-      - .:/app
       - ./docker/Gemfile.released:/app/Gemfile
+      - ./config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
 
   tcell_unicorn_web:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.perf-tests
     command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
     ports:
       - "3000:3000"
     links:
       - postgreshost
     volumes:
-      - .:/app
       - ./docker/Gemfile.released:/app/Gemfile
+      - ./config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
 
   tcell_puma_local_web:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.perf-tests
     command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
     ports:
       - "3000:3000"
@@ -77,8 +81,8 @@ services:
       - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
-      - .:/app
       - ./docker/Gemfile.dev:/app/Gemfile
+      - ./config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
 
@@ -98,5 +102,6 @@ services:
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - ./docker/Gemfile.dev:/app/Gemfile
+      - ./config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
