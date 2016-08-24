@@ -44,8 +44,8 @@ services:
     links:
       - postgreshost
     volumes:
-      - ./docker/Gemfile.released:/app/Gemfile
-      - ./config/tcell_agent.config:/app/config/tcell_agent.config
+      - ../docker/Gemfile.released:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
 
@@ -59,8 +59,8 @@ services:
     links:
       - postgreshost
     volumes:
-      - ./docker/Gemfile.released:/app/Gemfile
-      - ./config/tcell_agent.config:/app/config/tcell_agent.config
+      - ../docker/Gemfile.released:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
 
@@ -81,8 +81,8 @@ services:
       - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
-      - ./docker/Gemfile.dev:/app/Gemfile
-      - ./config/tcell_agent.config:/app/config/tcell_agent.config
+      - ../docker/Gemfile.dev:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
 
@@ -103,7 +103,7 @@ services:
       - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
-      - ./docker/Gemfile.dev:/app/Gemfile
-      - ./config/tcell_agent.config:/app/config/tcell_agent.config
+      - ../docker/Gemfile.dev:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
     volumes_from:
       - box
