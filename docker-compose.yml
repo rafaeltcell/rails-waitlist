@@ -12,25 +12,25 @@ services:
 
   puma_web:
     build: .
-    command: bundle exec puma -C config/puma.rb
+    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
     ports:
       - "3000:3000"
     links:
       - postgreshost
     volumes:
-      - .:/rails-waitlist
+      - .:/app
     volumes_from:
       - box
 
   unicorn_web:
     build: .
-    command: bundle exec unicorn -c config/unicorn.rb
+    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
     ports:
       - "3000:3000"
     links:
       - postgreshost
     volumes:
-      - .:/rails-waitlist
+      - .:/app
     volumes_from:
       - box
 
@@ -42,15 +42,8 @@ services:
     links:
       - postgreshost
     volumes:
-      - ../rubyagent-tcell/lib:/tcellagent_src/lib
-      - ../rubyagent-tcell/bin:/tcellagent_src/bin
-      - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
-      - ../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
-      - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
-      - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
-      - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
-      - .:/rails-waitlist
-      - ./docker/Gemfile.released:/rails-waitlist/Gemfile
+      - .:/app
+      - ./docker/Gemfile.released:/app/Gemfile
     volumes_from:
       - box
 
@@ -62,15 +55,8 @@ services:
     links:
       - postgreshost
     volumes:
-      - ../rubyagent-tcell/lib:/tcellagent_src/lib
-      - ../rubyagent-tcell/bin:/tcellagent_src/bin
-      - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
-      - ../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
-      - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
-      - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
-      - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
-      - .:/rails-waitlist
-      - ./docker/Gemfile.released:/rails-waitlist/Gemfile
+      - .:/app
+      - ./docker/Gemfile.released:/app/Gemfile
     volumes_from:
       - box
 
@@ -89,8 +75,8 @@ services:
       - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
-      - .:/rails-waitlist
-      - ./docker/Gemfile.dev:/rails-waitlist/Gemfile
+      - .:/app
+      - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box
 
@@ -109,7 +95,6 @@ services:
       - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
       - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
-      - .:/rails-waitlist
-      - ./docker/Gemfile.dev:/rails-waitlist/Gemfile
+      - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box

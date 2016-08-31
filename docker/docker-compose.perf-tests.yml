@@ -1,0 +1,109 @@
+version: '2'
+services:
+  postgreshost:
+    image: postgres:9.4.1
+    ports:
+      - "5432:5432"
+
+  box:
+    image: busybox
+    volumes:
+      - /box
+
+  puma_web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.perf-tests
+    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes_from:
+      - box
+
+  unicorn_web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.perf-tests
+    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes_from:
+      - box
+
+  tcell_puma_web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.perf-tests
+    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes:
+      - ../docker/Gemfile.released:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
+    volumes_from:
+      - box
+
+  tcell_unicorn_web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.perf-tests
+    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes:
+      - ../docker/Gemfile.released:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
+    volumes_from:
+      - box
+
+  tcell_puma_local_web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.perf-tests
+    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes:
+      - ../../rubyagent-tcell/lib:/tcellagent_src/lib
+      - ../../rubyagent-tcell/bin:/tcellagent_src/bin
+      - ../../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
+      - ../../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
+      - ../../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
+      - ../../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
+      - ../../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
+      - ../docker/Gemfile.dev:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
+    volumes_from:
+      - box
+
+  tcell_unicorn_local_web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.perf-tests
+    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes:
+      - ../../rubyagent-tcell/lib:/tcellagent_src/lib
+      - ../../rubyagent-tcell/bin:/tcellagent_src/bin
+      - ../../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
+      - ../../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
+      - ../../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
+      - ../../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
+      - ../../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
+      - ../docker/Gemfile.dev:/app/Gemfile
+      - ../config/tcell_agent.config:/app/config/tcell_agent.config
+    volumes_from:
+      - box
