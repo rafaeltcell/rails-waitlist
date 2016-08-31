@@ -35,9 +35,7 @@ services:
       - box
 
   tcell_puma_web:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.perf-tests
+    build: .
     command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
     ports:
       - "3000:3000"
