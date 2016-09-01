@@ -68,6 +68,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
       - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
@@ -88,6 +89,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
       - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
