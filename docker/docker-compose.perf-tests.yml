@@ -68,7 +68,7 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile.perf-tests
-    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
+    command: sh -c "cd /tcellagent_src && rake compile && cd /app && bundle install && bundle exec puma -C config/puma.rb"
     ports:
       - "3000:3000"
     links:
@@ -91,7 +91,7 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile.perf-tests
-    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
+    command: sh -c "cd /tcellagent_src && rake compile && cd /app && bundle install && bundle exec unicorn -c config/unicorn.rb"
     ports:
       - "3000:3000"
     links:
