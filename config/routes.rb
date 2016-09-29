@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/ping', controller: :welcome, action: :ping
 
+  get '/send_me_elsewhere', controller: :welcome, action: :send_me_elsewhere
+
   root 'welcome#index'
 
 end

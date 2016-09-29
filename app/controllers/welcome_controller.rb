@@ -15,4 +15,8 @@ class WelcomeController < ApplicationController
     render json: {status: "alive"}
   end
 
+  def send_me_elsewhere
+    redirect_to 'http://www.google.com'
+  end
+
 end
