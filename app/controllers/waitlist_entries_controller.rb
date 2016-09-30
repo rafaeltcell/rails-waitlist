@@ -13,4 +13,8 @@ class WaitlistEntriesController < ApplicationController
     redirect_to waitlist_entries_path
   end
 
+  def show
+    render json: {success: :showing}
+  end
+
 end
