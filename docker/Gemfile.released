@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'devise'
 
+gem 'grape', '0.10.1'
+
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'

@@ -62,7 +62,7 @@ services:
 
   tcell_puma_local_web:
     build: .
-    command: sh -c "bundle install && bundle exec puma -C config/puma.rb"
+    command: sh -c "cd /tcellagent_src && bundle && bundle exec rake compile && cd /app && bundle && bundle exec puma -C config/puma.rb"
     ports:
       - "3000:3000"
     links:
@@ -83,7 +83,7 @@ services:
 
   tcell_unicorn_local_web:
     build: .
-    command: sh -c "bundle install && bundle exec unicorn -c config/unicorn.rb"
+    command: sh -c "cd /tcellagent_src && bundle && bundle exec rake compile && cd /app && bundle && bundle exec unicorn -c config/unicorn.rb"
     ports:
       - "3000:3000"
     links:

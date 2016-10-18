@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount TcellApi => '/api'
+
   devise_for :users
   resources :widgets
   resources :users, only: [:index]
