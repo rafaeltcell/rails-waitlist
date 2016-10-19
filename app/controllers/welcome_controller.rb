@@ -19,4 +19,8 @@ class WelcomeController < ApplicationController
     redirect_to 'http://www.google.com'
   end
 
+  def some
+    render json: {status: params}
+  end
+
 end

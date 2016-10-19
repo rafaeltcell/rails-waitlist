@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/send_me_elsewhere', controller: :welcome, action: :send_me_elsewhere
 
+  get '/some/:name', controller: :welcome, action: :some
+
   root 'welcome#index'
 
 end
