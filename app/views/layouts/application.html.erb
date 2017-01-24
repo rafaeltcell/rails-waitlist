@@ -18,6 +18,7 @@
         <div class="pull-right">
           <div class="signed-in-user">
             <%= "Hi, #{current_user.email}!" %>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
           </div>
         </div>
       <% end %>
