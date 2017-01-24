@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
-ruby '2.2.4'
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.7'
 gem 'pg'
 gem 'rails_12factor', group: :production
 
 gem 'bootstrap-sass', '3.3.6'
-gem 'sass-rails', '~> 5.0.3'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 
 gem 'slim'
 
@@ -18,25 +17,21 @@ gem 'therubyracer', platforms: :ruby, group: :production
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-gem 'devise'
+gem 'devise', '3.5.6'
 
 gem 'grape', '0.10.1'
-
-group :development do
-  gem 'capistrano-rails'
-  gem 'capistrano-rvm'
-  gem 'capistrano3-puma'
-  gem 'derailed'
-  gem 'stackprof'
-end
 
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
 end
 
+group :passenger_server do
+  gem 'passenger', require: 'phusion_passenger/rack_handler'
+end
+
 group :puma_server do
-  gem 'puma'
+  gem 'puma', '2.16.0'
 end
 
 group :unicorn_server do
