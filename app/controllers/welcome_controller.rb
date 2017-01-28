@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def index
     if user_signed_in?
@@ -21,6 +22,10 @@ class WelcomeController < ApplicationController
 
   def some
     render json: {status: params}
+  end
+
+  def feed_me
+    render json: {params: params}
   end
 
 end

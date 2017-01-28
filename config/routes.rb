@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get '/some/:name', controller: :welcome, action: :some
 
+  post '/feed_me', controller: :welcome, action: :feed_me
+
   root 'welcome#index'
 
 end
