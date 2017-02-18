@@ -16,3 +16,5 @@ WORKDIR $APP_HOME
 ADD . $APP_HOME/
 
 ENV BUNDLE_PATH /box
+
+RUN rm -f Gemfile.lock
