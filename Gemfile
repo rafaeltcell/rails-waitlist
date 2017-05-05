@@ -21,6 +21,8 @@ gem 'devise', '3.5.6'
 
 gem 'grape', '0.10.1'
 
+gem 'newrelic_rpm', '4.1.0.333'
+
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
