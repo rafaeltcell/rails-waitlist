@@ -212,6 +212,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    tcell_agent (0.2.28)
+      json (>= 1.8)
+      pbkdf2 (>= 0.1)
+      rest-client (>= 1.6)
     temple (0.7.7)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -263,6 +267,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   slim
+  tcell_agent (= 0.2.28)
   therubyracer
   uglifier
   unicorn
