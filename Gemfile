@@ -22,6 +22,9 @@ gem 'devise', '3.5.6'
 gem 'grape', '0.10.1'
 
 gem 'newrelic_rpm', '4.1.0.333'
+gem 'rest-client', '1.8.0'
+gem 'json', '1.8.6'
+gem 'pbkdf2', '0.1.0'
 
 group :test do
   gem 'rspec'
