@@ -44,4 +44,5 @@ group :unicorn_server do
   gem 'rack-handlers'
 end
 
-gem 'tcell_agent', '0.2.28'
+#gem 'tcell_agent', '0.2.28'
+gem 'rbtrace', require: false
