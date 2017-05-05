@@ -21,8 +21,8 @@ test:
   username: postgres
   password:
 
-#production:
-  #<<: *default
-  #database: waitlist
-  #username: laksdjf
-  #password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: waitlist
+  username: tcelluser
+  password: <%= ENV['DATABASE_PASSWORD'] %>
