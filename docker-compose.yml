@@ -2,18 +2,6 @@ version: '2'
 services:
   postgreshost:
     image: postgres:latest
-    ports:
-      - "5433:5432"
-
-  box23:
-    image: busybox
-    volumes:
-      - /box23
-
-  box:
-    image: busybox
-    volumes:
-      - /box
 
   puma_web:
     build: .
@@ -23,9 +11,8 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box:/box
       - .:/app
-    volumes_from:
-      - box
 
   unicorn_web:
     build: .
@@ -35,9 +22,8 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box:/box
       - .:/app
-    volumes_from:
-      - box
 
   tcell_puma_web:
     build: .
@@ -47,10 +33,9 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box:/box
       - .:/app
       - ./docker/Gemfile.released:/app/Gemfile
-    volumes_from:
-      - box
 
   tcell_unicorn_web:
     build: .
@@ -60,10 +45,9 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box:/box
       - .:/app
       - ./docker/Gemfile.released:/app/Gemfile
-    volumes_from:
-      - box
 
   tcell_puma_local_web:
     build: .
@@ -73,6 +57,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box:/box
       - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
@@ -83,8 +68,6 @@ services:
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/app
       - ./docker/Gemfile.dev:/app/Gemfile
-    volumes_from:
-      - box
 
   tcell_unicorn_local_web:
     build: .
@@ -94,6 +77,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box:/box
       - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
@@ -104,8 +88,6 @@ services:
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/app
       - ./docker/Gemfile.dev:/app/Gemfile
-    volumes_from:
-      - box
 
   tcell_passenger_local_web:
     build: .
@@ -115,6 +97,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box:/box
       - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
@@ -125,8 +108,6 @@ services:
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/app
       - ./docker/Gemfile.dev:/app/Gemfile
-    volumes_from:
-      - box
 
   puma_web_ruby23:
     build:
@@ -138,9 +119,8 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - .:/app
-    volumes_from:
-      - box23
 
   unicorn_web_ruby23:
     build:
@@ -152,9 +132,8 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - .:/app
-    volumes_from:
-      - box23
 
   passenger_web_ruby23:
     build:
@@ -166,9 +145,8 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - .:/app
-    volumes_from:
-      - box23
 
   tcell_puma_web_ruby23:
     build:
@@ -180,10 +158,9 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - .:/app
       - ./docker/Gemfile.released:/app/Gemfile
-    volumes_from:
-      - box23
 
   tcell_unicorn_web_ruby23:
     build:
@@ -195,10 +172,9 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - .:/app
       - ./docker/Gemfile.released:/app/Gemfile
-    volumes_from:
-      - box23
 
   tcell_passenger_web_ruby23:
     build:
@@ -210,10 +186,9 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - .:/app
       - ./docker/Gemfile.released:/app/Gemfile
-    volumes_from:
-      - box23
 
   tcell_puma_local_web_ruby23:
     build:
@@ -225,6 +200,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
@@ -235,8 +211,6 @@ services:
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/app
       - ./docker/Gemfile.dev:/app/Gemfile
-    volumes_from:
-      - box23
 
   tcell_unicorn_local_web_ruby23:
     build:
@@ -248,6 +222,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
@@ -258,8 +233,6 @@ services:
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/app
       - ./docker/Gemfile.dev:/app/Gemfile
-    volumes_from:
-      - box23
 
   tcell_passenger_local_web_ruby23:
     build:
@@ -271,6 +244,7 @@ services:
     links:
       - postgreshost
     volumes:
+      - /tmp/data-gems/box23:/box23
       - ../rubyagent-tcell/ext:/tcellagent_src/ext
       - ../rubyagent-tcell/lib:/tcellagent_src/lib
       - ../rubyagent-tcell/bin:/tcellagent_src/bin
@@ -281,5 +255,3 @@ services:
       - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
       - .:/app
       - ./docker/Gemfile.dev:/app/Gemfile
-    volumes_from:
-      - box23
