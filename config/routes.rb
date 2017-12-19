@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   post '/feed_me', controller: :welcome, action: :feed_me
 
+  get '/sql-exception', controller: :welcome, action: :sql_exception
+
   root 'welcome#index'
 
 end

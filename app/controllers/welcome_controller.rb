@@ -28,4 +28,8 @@ class WelcomeController < ApplicationController
     render json: {params: params}
   end
 
+  def sql_exception
+    User.where("malformed = ").count
+  end
+
 end
