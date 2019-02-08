@@ -1,0 +1,8 @@
+FROM ruby:2.5-alpine3.7
+
+RUN apk update
+RUN apk add --no-cache bash nodejs build-base sqlite-dev tzdata vim
+WORKDIR /app
+COPY . .
+
+ENV BUNDLE_PATH /box

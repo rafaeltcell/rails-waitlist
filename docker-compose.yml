@@ -119,6 +119,27 @@ services:
     security_opt:
       - seccomp:unconfined
 
+  tcell_unicorn_local_web_alpine:
+    build: .
+    command: sh -c "cd /tcellagent_src && bundle && cd /app && bundle && bundle exec unicorn -c config/unicorn.rb"
+    ports:
+      - "3000:3000"
+    links:
+      - postgreshost
+    volumes:
+      - ../rubyagent-tcell/ext:/tcellagent_src/ext
+      - ../rubyagent-tcell/lib:/tcellagent_src/lib
+      - ../rubyagent-tcell/bin:/tcellagent_src/bin
+      - ../rubyagent-tcell/Gemfile:/tcellagent_src/Gemfile
+      - ../rubyagent-tcell/Gemfile.lock:/tcellagent_src/Gemfile.lock
+      - ../rubyagent-tcell/tcell_agent.gemspec:/tcellagent_src/tcell_agent.gemspec
+      - ../rubyagent-tcell/LICENSE:/tcellagent_src/LICENSE
+      - ../rubyagent-tcell/Rakefile:/tcellagent_src/Rakefile
+      - .:/app
+      - ./docker/Gemfile.dev:/app/Gemfile
+    volumes_from:
+      - box
+
   tcell_passenger_local_web:
     build: .
     command: sh -c "cd /tcellagent_src && bundle && cd /app && bundle && bundle exec passenger start --max-pool-size 3"
