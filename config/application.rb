@@ -4,6 +4,7 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+
 Bundler.require(*Rails.groups)
 
 module RubyGettingStarted
@@ -21,5 +22,9 @@ module RubyGettingStarted
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
+    #config.middleware.insert_before(Rack::Sendfile, Rack::Deflater)
+    config.middleware.use "LogBeforeTimeout"
+    #config.middleware.use Rack::Deflater
   end
 end

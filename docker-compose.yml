@@ -26,6 +26,8 @@ services:
       - .:/app
     volumes_from:
       - box
+    security_opt:
+      - seccomp:unconfined
 
   unicorn_web:
     build: .
@@ -38,6 +40,8 @@ services:
       - .:/app
     volumes_from:
       - box
+    security_opt:
+      - seccomp:unconfined
 
   tcell_puma_web:
     build: .
@@ -51,6 +55,8 @@ services:
       - ./docker/Gemfile.released:/app/Gemfile
     volumes_from:
       - box
+    security_opt:
+      - seccomp:unconfined
 
   tcell_unicorn_web:
     build: .
@@ -64,6 +70,8 @@ services:
       - ./docker/Gemfile.released:/app/Gemfile
     volumes_from:
       - box
+    security_opt:
+      - seccomp:unconfined
 
   tcell_puma_local_web:
     build: .
@@ -85,6 +93,8 @@ services:
       - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box
+    security_opt:
+      - seccomp:unconfined
 
   tcell_unicorn_local_web:
     build: .
@@ -106,6 +116,8 @@ services:
       - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box
+    security_opt:
+      - seccomp:unconfined
 
   tcell_passenger_local_web:
     build: .
@@ -127,6 +139,8 @@ services:
       - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box
+    security_opt:
+      - seccomp:unconfined
 
   puma_web_ruby23:
     build:
@@ -141,6 +155,8 @@ services:
       - .:/app
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   unicorn_web_ruby23:
     build:
@@ -155,6 +171,8 @@ services:
       - .:/app
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   passenger_web_ruby23:
     build:
@@ -169,6 +187,8 @@ services:
       - .:/app
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   tcell_puma_web_ruby23:
     build:
@@ -184,6 +204,8 @@ services:
       - ./docker/Gemfile.released:/app/Gemfile
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   tcell_unicorn_web_ruby23:
     build:
@@ -199,6 +221,8 @@ services:
       - ./docker/Gemfile.released:/app/Gemfile
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   tcell_passenger_web_ruby23:
     build:
@@ -214,6 +238,8 @@ services:
       - ./docker/Gemfile.released:/app/Gemfile
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   tcell_puma_local_web_ruby23:
     build:
@@ -237,6 +263,8 @@ services:
       - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   tcell_unicorn_local_web_ruby23:
     build:
@@ -260,6 +288,8 @@ services:
       - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
 
   tcell_passenger_local_web_ruby23:
     build:
@@ -283,3 +313,5 @@ services:
       - ./docker/Gemfile.dev:/app/Gemfile
     volumes_from:
       - box23
+    security_opt:
+      - seccomp:unconfined
