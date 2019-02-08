@@ -1,6 +1,6 @@
 FROM ruby:2.2.4
 
-RUN apt-get update -qq && apt-get install -y build-essential
+RUN apt-get update -qq && apt-get install -y build-essential htop strace
 
 # for postgres
 RUN apt-get install -y libpq-dev
